@@ -10,7 +10,7 @@ package boxcomp;
  * which box (subclass) is to be used.
  * @author Ben, James, Jake
  */
-public class Box {
+abstract class Box {
     //fields
     private int quant;
     private double size;
@@ -21,5 +21,6 @@ public class Box {
         size = s;
     }
     
+    abstract double getPrice();
     //no methods since subclasses will
 }
