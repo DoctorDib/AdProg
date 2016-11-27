@@ -279,16 +279,17 @@ public class GUI extends javax.swing.JFrame {
         boolean bott = chkBottom.isSelected();
         boolean corn = chkCorners.isSelected();
         double size = 0;
+        double cost = 0; 
         
         try{
             //Tests for valid size inputs
             double w = Double.parseDouble(width.getText());
             double l = Double.parseDouble(length.getText());
-            double h = Double.parseDouble(length.getText());
+            double h = Double.parseDouble(height.getText());
             
             //Assuming no validation issues
             size = ((w*l) + (w*h) + (l*h)) * 2;
-            createBox(grade, col, bott, corn, size, w, l, h);
+            cost = createBox(grade, col, bott, corn, size, w, l, h);
             
         }catch(Exception e){
             //Size values aren't doubles
@@ -296,32 +297,37 @@ public class GUI extends javax.swing.JFrame {
             "Wrong Size", JOptionPane.ERROR_MESSAGE);
         }
         
+        System.out.println(cost);
+        receipt.setText(receipt.getText() + "\nTotal: " + cost);
         
     }
-    public void createBox(int grade, int col, boolean bott, boolean corn, double size, double w, double l, double h){
+    public double createBox(int grade, int col, boolean bott, boolean corn, double size, double w, double l, double h){
     //Test if box can exist
         String valid = validate(grade, col, bott, corn);
+        Double price = 0.0;
+        
         if(valid == "good"){
             //make box
             if (col == 0){
                 Box box = new BoxType1(grade, size);
-                box.getPrice();
+                price = box.getPrice();
+                System.out.println(price);
             }
             else if (col == 1){
                 Box box = new BoxType2(grade, size);
-                box.getPrice();
+                price = box.getPrice();
             }
             else if (col == 2 && bott == false){
                 Box box = new BoxType3(grade, size);
-                box.getPrice();
+                price = box.getPrice();
             }
             else if (col == 2 && bott == true && corn == false){
                 Box box = new BoxType4(grade, size);
-                box.getPrice();
+                price = box.getPrice();
             }
             else{
                 Box box = new BoxType5(grade, size);
-                box.getPrice();
+                price = box.getPrice();
             }
 
         }else{
@@ -329,6 +335,7 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.ERROR_MESSAGE);
         }
         
+        return price;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

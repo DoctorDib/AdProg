@@ -14,7 +14,7 @@ public class BoxType5 extends Box{
     
     int grade;
     double size;
-    int price;
+    double price;
     //Constructor
     public BoxType5(int g, double s){
         super(g, s);
