@@ -7,7 +7,7 @@ package boxcomp;
 
 /**
  *
- * @author Ben
+ * @author Ben, James, Jake
  */
 public class BoxType1 extends Box{
     //fields
