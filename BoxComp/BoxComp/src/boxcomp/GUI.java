@@ -305,18 +305,23 @@ public class GUI extends javax.swing.JFrame {
             //make box
             if (col == 0){
                 Box box = new BoxType1(grade, size);
+                box.getPrice();
             }
             else if (col == 1){
                 Box box = new BoxType2(grade, size);
+                box.getPrice();
             }
             else if (col == 2 && bott == false){
                 Box box = new BoxType3(grade, size);
+                box.getPrice();
             }
             else if (col == 2 && bott == true && corn == false){
                 Box box = new BoxType4(grade, size);
+                box.getPrice();
             }
             else{
                 Box box = new BoxType5(grade, size);
+                box.getPrice();
             }
 
         }else{
