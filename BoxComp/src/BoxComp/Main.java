@@ -1,8 +1,10 @@
 /**
  * 
  */
+package BoxComp;
 
 /**
+ * @author Ben, James, Jake
  *
  */
 public class Main {
