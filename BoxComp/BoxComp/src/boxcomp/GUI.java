@@ -280,16 +280,16 @@ public class GUI extends javax.swing.JFrame {
         boolean corn = chkCorners.isSelected();
         double size = 0;
         
-       
-        
         try{
+            //Tests for valid size inputs
             double w = Double.parseDouble(width.getText());
             double l = Double.parseDouble(length.getText());
             double h = Double.parseDouble(length.getText());
-
             
+            //Assuming no validation issues
             size = ((w*l) + (w*h) + (l*h)) * 2;
             createBox(grade, col, bott, corn, size, w, l, h);
+            
         }catch(Exception e){
             //Size values aren't doubles
             JOptionPane.showMessageDialog(null, "Size must be a number!", 
@@ -297,8 +297,6 @@ public class GUI extends javax.swing.JFrame {
         }
         
         
-        
-        //Assuming no validation issues
     }
     public void createBox(int grade, int col, boolean bott, boolean corn, double size, double w, double l, double h){
     //Test if box can exist
