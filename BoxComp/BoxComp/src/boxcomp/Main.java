@@ -20,6 +20,9 @@ public class Main {
         // TODO code application logic here
         System.out.println("hello world!");
         
+        /**
+         *Starts the GUI for user interaction. 
+         */
         GUI screen = new GUI();
         screen.setVisible(true);
         
