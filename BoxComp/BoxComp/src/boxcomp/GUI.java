@@ -181,6 +181,7 @@ public class GUI extends javax.swing.JFrame {
         receipt.setColumns(20);
         receipt.setRows(5);
         receipt.setText("ORDER RECEIPT");
+        receipt.setRequestFocusEnabled(false);
         jScrollPane1.setViewportView(receipt);
 
         jButton1.setForeground(new java.awt.Color(0, 153, 0));
@@ -277,25 +278,49 @@ public class GUI extends javax.swing.JFrame {
         int col = colBox.getSelectedIndex();
         boolean bott = chkBottom.isSelected();
         boolean corn = chkCorners.isSelected();
-        double size;
+        double size = 0;
         
+       
         
         try{
             double w = Double.parseDouble(width.getText());
             double l = Double.parseDouble(length.getText());
             double h = Double.parseDouble(length.getText());
 
+            
+            size = ((w*l) + (w*h) + (l*h)) * 2;
+            createBox(grade, col, bott, corn, size, w, l, h);
         }catch(Exception e){
             //Size values aren't doubles
             JOptionPane.showMessageDialog(null, "Size must be a number!", 
             "Wrong Size", JOptionPane.ERROR_MESSAGE);
         }
         
+        
+        
         //Assuming no validation issues
-        //Test if box can exist
+    }
+    public void createBox(int grade, int col, boolean bott, boolean corn, double size, double w, double l, double h){
+    //Test if box can exist
         String valid = validate(grade, col, bott, corn);
         if(valid == "good"){
-            //Make box
+            //make box
+            if (col == 0){
+                Box box = new BoxType1(grade, size);
+            }
+            else if (col == 1){
+                Box box = new BoxType2(grade, size);
+            }
+            else if (col == 2 && bott == false){
+                Box box = new BoxType3(grade, size);
+            }
+            else if (col == 2 && bott == true && corn == false){
+                Box box = new BoxType4(grade, size);
+            }
+            else{
+                Box box = new BoxType5(grade, size);
+            }
+
         }else{
             JOptionPane.showMessageDialog(null, valid, "Box Not Available", 
             JOptionPane.ERROR_MESSAGE);
