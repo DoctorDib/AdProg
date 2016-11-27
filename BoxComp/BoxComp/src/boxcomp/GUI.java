@@ -29,8 +29,8 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        tboxWidth = new javax.swing.JTextField();
-        tboxLength = new javax.swing.JTextField();
+        width = new javax.swing.JTextField();
+        length = new javax.swing.JTextField();
         cmbGrade = new javax.swing.JComboBox();
         chkBottom = new javax.swing.JCheckBox();
         chkCorners = new javax.swing.JCheckBox();
@@ -39,9 +39,9 @@ public class GUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        colBox = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        height = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -55,12 +55,12 @@ public class GUI extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Input"));
 
-        tboxWidth.setText("Width");
+        width.setText("Width");
 
-        tboxLength.setText("Length");
+        length.setText("Length");
 
         cmbGrade.setMaximumRowCount(5);
-        cmbGrade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1-3", "2-4", "2-5", "2-5", "3-5" }));
+        cmbGrade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
         cmbGrade.setToolTipText("");
 
         chkBottom.setText("Reinforced Bottom");
@@ -75,11 +75,11 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel4.setText("Quantity");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No colour", "1 Colour", "2 Colours" }));
+        colBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No colour", "1 Colour", "2 Colours" }));
 
         jLabel5.setText("Colour Printing");
 
-        jTextField1.setText("Height");
+        height.setText("Height");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,14 +88,14 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(colBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel2)
                     .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(tboxWidth, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(width, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tboxLength, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(length, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +112,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(chkCorners)
                                 .addComponent(chkBottom))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,9 +121,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tboxWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tboxLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(length, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -133,7 +133,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(colBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(chkBottom)
@@ -162,7 +162,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setForeground(new java.awt.Color(0, 153, 0));
-        jButton1.setText("Confirm");
+        jButton1.setText("Add to Order");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -250,6 +250,28 @@ public class GUI extends javax.swing.JFrame {
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //validate and choose box
+        
+        int grade = cmbGrade.getSelectedIndex() + 1;
+        int col = colBox.getSelectedIndex();
+        boolean bott = chkBottom.isSelected();
+        boolean corn = chkCorners.isSelected();
+        double size;
+        
+        
+        try{
+            double w = Double.parseDouble(width.getText());
+            double l = Double.parseDouble(length.getText());
+            double h = Double.parseDouble(length.getText());
+
+        }catch(Exception e){
+            //Size values aren't doubles
+            System.out.println("Not doubles in size");
+        }
+        
+        //Assuming no validation issues
+        //Test if box can exist
+        System.out.println(validate(grade, col, bott, corn));
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -294,9 +316,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkCorners;
     private javax.swing.JCheckBox chkTop;
     private javax.swing.JComboBox cmbGrade;
+    private javax.swing.JComboBox<String> colBox;
+    private javax.swing.JTextField height;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -306,20 +329,47 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField length;
     private javax.swing.JSpinner spnQuantity;
-    private javax.swing.JTextField tboxLength;
-    private javax.swing.JTextField tboxWidth;
+    private javax.swing.JTextField width;
     // End of variables declaration//GEN-END:variables
 
-    public boolean validate(int i){
-
-        return false;
+    
+    private String validate(int grade, int colour, boolean bottom, boolean corner){
+        boolean fail = false;
+        String cause = "";
+        if(corner&&!bottom){
+            fail = true;
+            cause += "Reinforced Bottom is required for Reinforced Corners \n";
+        }
+        if(bottom&&grade==1){
+            fail = true;
+            cause += "Grade 2 or higher is required for Reinforced Bottom \n";
+        }
+        if(corner&&grade<3){
+            fail = true;
+            cause += "Grade 3 or higher is required for Reinforced Corners \n";
+        }
+        if (colour!=2&&bottom){
+            fail = true;
+            cause += "2 Colours are required for Reinforced Bottom \n";
+        }
+        if(colour==2&&grade==1){
+            fail = true;
+            cause += "Grade 2 or higher is required for 2 Colours \n";
+        }
+        if((grade<2 || grade>4) && colour==1){
+            fail = true;
+            cause += "Grade 2-4 is required for 1 Colour \n";
+        }
+        if(colour==0&&grade>3){
+            fail = true;
+            cause += "Grade 3 or lower is required for no Colours \n";
+        }
+        if(fail){
+            return cause;
+        } else {
+            return "good";
+        }
     }
-
-    public double getSubtotal(int i){
-
-        return 0;
-    }
-
 }
