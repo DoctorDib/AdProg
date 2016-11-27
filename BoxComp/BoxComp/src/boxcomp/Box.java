@@ -11,5 +11,15 @@ package boxcomp;
  * @author Ben, James, Jake
  */
 public class Box {
+    //fields
+    private int quant;
+    private double size;
     
+    //constructor
+    public Box(int q, double s){
+        quant = q;
+        size = s;
+    }
+    
+    //no methods since subclasses will
 }
