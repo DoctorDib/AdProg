@@ -12,12 +12,12 @@ package boxcomp;
  */
 abstract class Box {
     //fields
-    private int quant;
-    private double size;
+    private int grade;
+    double size;
     
     //constructor
-    public Box(int q, double s){
-        quant = q;
+    public Box(int g, double s){
+        grade = g;
         size = s;
     }
     
