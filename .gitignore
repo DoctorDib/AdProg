@@ -215,3 +215,4 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 /BoxComp/BoxComp/nbproject/private/
+BoxComp/BoxComp/nbproject/build-impl.xml
