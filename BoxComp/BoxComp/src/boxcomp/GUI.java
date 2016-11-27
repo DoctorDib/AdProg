@@ -18,6 +18,7 @@ public double Total = 0;
      */
     public GUI() {
         initComponents();
+        spnQuantity.setValue(1);
     }
 
     /**
@@ -41,7 +42,7 @@ public double Total = 0;
         spnQuantity = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        colBox = new javax.swing.JComboBox<>();
+        colBox = new javax.swing.JComboBox<String>();
         jLabel5 = new javax.swing.JLabel();
         height = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -83,11 +84,17 @@ public double Total = 0;
 
         chkTop.setText("Sealable Top");
 
+        spnQuantity.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnQuantityStateChanged(evt);
+            }
+        });
+
         jLabel2.setText("Card Grade");
 
         jLabel4.setText("Quantity");
 
-        colBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No colour", "1 Colour", "2 Colours" }));
+        colBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No colour", "1 Colour", "2 Colours" }));
 
         jLabel5.setText("Colour Printing");
 
@@ -120,9 +127,9 @@ public double Total = 0;
                         .addComponent(chkBottom))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +291,7 @@ public double Total = 0;
         chkCorners.setSelected(false);
         chkTop.setSelected(false);
         
-        spnQuantity.setValue(0);
+        spnQuantity.setValue(1);
         
         colBox.setSelectedIndex(0);
         
@@ -378,6 +385,13 @@ public double Total = 0;
         return price * quan;
       
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void spnQuantityStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQuantityStateChanged
+        int val = (int) spnQuantity.getValue();
+        if (val<1){
+            spnQuantity.setValue(1);
+        }
+    }//GEN-LAST:event_spnQuantityStateChanged
 
     public void writeToReceipt(double price, String type, int quantity){
         price = price * quantity;
