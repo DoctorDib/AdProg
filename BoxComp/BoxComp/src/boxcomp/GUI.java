@@ -321,17 +321,14 @@ public double Total = 0;
             //Assuming no validation issues
             size = ((w*l) + (w*h) + (l*h)) * 2;
             cost = createBox(grade, col, bott, corn, size, w, l, h, quan);
-            
-            receipt.setText(receipt.getText() + "\n------------------------------");
-            receipt.setText(receipt.getText() + "\nTotal: " + Total);
-            receipt.setText(receipt.getText() + "\n------------------------------");
+
             
         }catch(Exception e){
             //Size values aren't doubles
             JOptionPane.showMessageDialog(null, "Size must be a number!", 
                     "Wrong Size", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }
     public double createBox(int grade, int col, boolean bott, boolean corn, 
             double size, double w, double l, double h, int quan){
@@ -388,6 +385,11 @@ public double Total = 0;
         receipt.setText(receipt.getText() + "\nBoxType: " + type);
         receipt.setText(receipt.getText() + "\nQuantity: " + quantity);
         receipt.setText(receipt.getText() + "\nSubtotal: " + price);
+        
+        Total = price + Total;
+        receipt.setText(receipt.getText() + "\n------------------------------");
+        receipt.setText(receipt.getText() + "\nTotal: " + Total);
+        receipt.setText(receipt.getText() + "\n------------------------------");
     }
     /**
      * 
