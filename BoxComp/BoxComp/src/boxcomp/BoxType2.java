@@ -14,7 +14,7 @@ public class BoxType2 extends Box{
     
     int grade;
     double size;
-    double price;
+    double price = 0;
     //Constructor
     public BoxType2(int g, double s){
         super(g, s);
@@ -35,17 +35,17 @@ public class BoxType2 extends Box{
         switch (grade) {
             case 2:
                 {
-                    double price = size * 0.60;
+                    price = size * 0.60;
                     break;
                 }
             case 3:
                 {
-                    double price = size * 0.72;
+                    price = size * 0.72;
                     break;
                 }
             case 4:
                 {
-                    double price = size * 0.90;
+                    price = size * 0.90;
                     break;
                 }
             default:
