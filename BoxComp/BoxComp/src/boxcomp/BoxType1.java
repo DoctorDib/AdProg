@@ -24,16 +24,32 @@ public class BoxType1 extends Box{
     }
     
     //Methods
+
+    /**
+     *
+     * @return
+     */
+    @Override
     public double getPrice(){
         
-        if (grade == 1){
-            double price = size * 0.50;
-        }
-        else if (grade == 2){
-            double price = size * 0.60;
-        }
-        else if(grade == 3){
-            double price = size * 0.72;
+        switch (grade) {
+            case 1:
+                {
+                    double price = size * 0.50;
+                    break;
+                }
+            case 2:
+                {
+                    double price = size * 0.60;
+                    break;
+                }
+            case 3:
+                {
+                    double price = size * 0.72;
+                    break;
+                }
+            default:
+                break;
         }
         return price;
     }
