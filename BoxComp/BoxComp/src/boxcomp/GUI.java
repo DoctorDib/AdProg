@@ -8,7 +8,7 @@ package boxcomp;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Ben
+ * @author Ben, James, Jake
  */
 public class GUI extends javax.swing.JFrame {
 
