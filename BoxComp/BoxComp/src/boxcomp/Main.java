@@ -19,6 +19,11 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("hello world!");
+        
+        GUI screen = new GUI();
+        screen.setVisible(true);
+        
+        
     }
     
 }
