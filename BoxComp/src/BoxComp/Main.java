@@ -1,7 +1,7 @@
 /**
  * 
  */
-package BoxComp;
+package boxComp;
 
 /**
  * @author Ben, James, Jake
