@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
  * @author Ben, James, Jake
  */
 public class GUI extends javax.swing.JFrame {
-
+public String boxType;
+public double Total = 0;
     /**
      * Creates new form GUI
      */
@@ -46,6 +47,8 @@ public class GUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         receipt = new javax.swing.JTextArea();
@@ -94,6 +97,10 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel8.setText("Height:");
 
+        jLabel3.setText("x");
+
+        jLabel9.setText("x");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -104,34 +111,38 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(colBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel2)
-                    .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(width, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(length, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                    .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(chkTop)
+                        .addComponent(chkCorners)
+                        .addComponent(chkBottom))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(chkTop)
-                                .addComponent(chkCorners)
-                                .addComponent(chkBottom))))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(width, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(length, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,20 +156,10 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(length, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel9))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(chkBottom)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkCorners)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkTop)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel2)
@@ -167,8 +168,20 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(colBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(colBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(23, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(chkBottom)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkCorners)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkTop)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -261,9 +274,24 @@ public class GUI extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        //Resetting the whole form
+        
+        width.setText("");
+        height.setText("");
+        length.setText("");
+        
+        chkBottom.setSelected(false);
+        chkCorners.setSelected(false);
+        chkTop.setSelected(false);
+        
+        spnQuantity.setValue(0);
+        
+        colBox.setSelectedIndex(0);
+        
+        cmbGrade.setSelectedIndex(0);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    
     /**
      * Confirm button
      * This is used to validate and submit the box specs
@@ -280,6 +308,9 @@ public class GUI extends javax.swing.JFrame {
         boolean corn = chkCorners.isSelected();
         double size = 0;
         double cost = 0; 
+        int quan = (int) spnQuantity.getValue();
+        
+        
         
         try{
             //Tests for valid size inputs
@@ -289,19 +320,24 @@ public class GUI extends javax.swing.JFrame {
             
             //Assuming no validation issues
             size = ((w*l) + (w*h) + (l*h)) * 2;
-            cost = createBox(grade, col, bott, corn, size, w, l, h);
+            cost = createBox(grade, col, bott, corn, size, w, l, h, quan);
+            
             
         }catch(Exception e){
             //Size values aren't doubles
             JOptionPane.showMessageDialog(null, "Size must be a number!", 
-            "Wrong Size", JOptionPane.ERROR_MESSAGE);
+                    "Wrong Size", JOptionPane.ERROR_MESSAGE);
         }
         
-        System.out.println(cost);
-        receipt.setText(receipt.getText() + "\nTotal: " + cost);
+        System.out.println(Total = cost + Total);
+        receipt.setText(receipt.getText() + "\n------------------------------");
+        receipt.setText(receipt.getText() + "\nTotal: " + Total);
+        receipt.setText(receipt.getText() + "\n------------------------------");
         
     }
-    public double createBox(int grade, int col, boolean bott, boolean corn, double size, double w, double l, double h){
+    public double createBox(int grade, int col, boolean bott, boolean corn, 
+            double size, double w, double l, double h, int quan){
+    
     //Test if box can exist
         String valid = validate(grade, col, bott, corn);
         Double price = 0.0;
@@ -312,32 +348,49 @@ public class GUI extends javax.swing.JFrame {
                 Box box = new BoxType1(grade, size);
                 price = box.getPrice();
                 System.out.println(price);
+                boxType = "I";
+                writeToReceipt(price, boxType, quan);
             }
             else if (col == 1){
                 Box box = new BoxType2(grade, size);
                 price = box.getPrice();
+                boxType = "II";
+                writeToReceipt(price, boxType, quan);
             }
             else if (col == 2 && bott == false){
                 Box box = new BoxType3(grade, size);
                 price = box.getPrice();
+                boxType = "III";
+                writeToReceipt(price, boxType, quan);
             }
             else if (col == 2 && bott == true && corn == false){
                 Box box = new BoxType4(grade, size);
                 price = box.getPrice();
+                boxType = "IV";
+                writeToReceipt(price, boxType, quan);
             }
             else{
                 Box box = new BoxType5(grade, size);
                 price = box.getPrice();
+                boxType = "V";
+                writeToReceipt(price, boxType, quan);
             }
 
         }else{
             JOptionPane.showMessageDialog(null, valid, "Box Not Available", 
             JOptionPane.ERROR_MESSAGE);
         }
-        
-        return price;
+        return price * quan;
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void writeToReceipt(double price, String type, int quantity){
+        price = price * quantity;
+        receipt.setText(receipt.getText() + "\n==============================");
+        receipt.setText(receipt.getText() + "\nBoxType: " + type);
+        receipt.setText(receipt.getText() + "\nQuantity: " + quantity);
+        receipt.setText(receipt.getText() + "\nSubtotal: " + price);
+    }
     /**
      * 
      * 
@@ -387,11 +440,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
