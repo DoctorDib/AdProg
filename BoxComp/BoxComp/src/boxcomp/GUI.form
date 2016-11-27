@@ -29,7 +29,7 @@
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="201" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jPanel2" max="32767" attributes="0"/>
               </Group>
@@ -72,15 +72,122 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="279" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="chkTop" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkCorners" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkBottom" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tboxWidth" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="cmbGrade" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="tboxHeight" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tboxLength" min="-2" pref="50" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="cmbColour" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="spnQuantity" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="174" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="tboxWidth" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tboxHeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tboxLength" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cmbGrade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbColour" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="chkBottom" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkCorners" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkTop" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="spnQuantity" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JTextField" name="tboxWidth">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Width"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tboxHeight">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Height"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tboxHeightActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tboxLength">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Length"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbGrade">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="1"/>
+                <StringItem index="1" value="2"/>
+                <StringItem index="2" value="3"/>
+                <StringItem index="3" value="4"/>
+                <StringItem index="4" value="5"/>
+              </StringArray>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbColour">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="No Colour"/>
+                <StringItem index="1" value="1 Colour"/>
+                <StringItem index="2" value="2 Colours"/>
+              </StringArray>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkBottom">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Reinforced Bottom"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkCorners">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Reinforced Corners"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkTop">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sealable Top"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnQuantity">
+        </Component>
+      </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
