@@ -76,16 +76,10 @@ public double Total = 0;
 
         jLabel1.setText("Box Ordering Form");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(12, 13, 136, 20);
+        jLabel1.setBounds(12, 13, 108, 16);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Input"));
-
-        width.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                widthActionPerformed(evt);
-            }
-        });
 
         cmbGrade.setMaximumRowCount(5);
         cmbGrade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
@@ -205,7 +199,7 @@ public double Total = 0;
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(12, 42, 350, 298);
+        jPanel1.setBounds(12, 42, 350, 262);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Output"));
@@ -279,7 +273,7 @@ public double Total = 0;
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(12, 304, 350, 270);
+        jPanel2.setBounds(12, 304, 350, 253);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
