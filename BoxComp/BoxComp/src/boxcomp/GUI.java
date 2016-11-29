@@ -313,23 +313,19 @@ public double Total = 0;
      */
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         //validate and choose box
-        if ((Double.parseDouble(width.getText()) < 0.1) || (Double.parseDouble(length.getText()) < 0.1) || (Double.parseDouble(height.getText()) < 0.1) || (Double.parseDouble(width.getText()) > 10) || (Double.parseDouble(length.getText())> 10) || (Double.parseDouble(height.getText()) > 10)){
-            JOptionPane.showMessageDialog(null, "Box size limited to: \n - Min: 0.1m \n - Max: 10m", "Number out of range!", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
-           
-            int grade = cmbGrade.getSelectedIndex() + 1;
-            int col = colBox.getSelectedIndex();
-            boolean bott = chkBottom.isSelected();
-            boolean corn = chkCorners.isSelected();
-            double size;
-            //double cost = 0; 
-            int quan = (int) spnQuantity.getValue();
-
-
-
-            try{
+        try{
                 //Tests for valid size inputs
+            if ((Double.parseDouble(width.getText()) < 0.1) || (Double.parseDouble(length.getText()) < 0.1) || (Double.parseDouble(height.getText()) < 0.1) || (Double.parseDouble(width.getText()) > 10) || (Double.parseDouble(length.getText())> 10) || (Double.parseDouble(height.getText()) > 10)){
+                JOptionPane.showMessageDialog(null, "Box size limited to: \n - Min: 0.1m \n - Max: 10m", "Number out of range!", JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                int grade = cmbGrade.getSelectedIndex() + 1;
+                int col = colBox.getSelectedIndex();
+                boolean bott = chkBottom.isSelected();
+                boolean corn = chkCorners.isSelected();
+                double size;
+                //double cost = 0; 
+                int quan = (int) spnQuantity.getValue();
                 double w = Double.parseDouble(width.getText());
                 double l = Double.parseDouble(length.getText());
                 double h = Double.parseDouble(height.getText());
@@ -337,14 +333,12 @@ public double Total = 0;
                 //Assuming no validation issues
                 size = ((w*l) + (w*h) + (l*h))*2;
                 createBox(grade, col, bott, corn, size, w, l, h, quan);
-
-
-            }catch(Exception e){
+                }
+        }catch(NumberFormatException e){
                 //Size values aren't doubles
                 JOptionPane.showMessageDialog(null, "Size must be a number!", 
                         "Wrong Size", JOptionPane.ERROR_MESSAGE);
             }
-        }
         
         
 
@@ -384,10 +378,13 @@ public double Total = 0;
         int val = (int) spnQuantity.getValue();
         if (val<1){
             spnQuantity.setValue(1);
+        } else if (val > 100) {
+            spnQuantity.setValue(100);
         }
     }//GEN-LAST:event_spnQuantityStateChanged
 
     public void writeToReceipt(Box box, int quantity){
+        box.getPrice();
         receipt.setText(receipt.getText() + "\n===============================");
         receipt.setText(receipt.getText() + "\n     BoxType:" + box.getType());
         receipt.setText(receipt.getText() + box.getReceipt());

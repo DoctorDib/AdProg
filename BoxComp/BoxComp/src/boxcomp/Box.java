@@ -23,7 +23,7 @@ abstract class Box {
     }
     
     abstract String getType();
-    abstract double getPrice();
+    abstract void getPrice();
     abstract int getGrade();
     abstract double getTotal();
     abstract String getReceipt();
