@@ -318,35 +318,37 @@ public double Total = 0;
      */
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         //validate and choose box
-        if (Double.parseDouble(width.getText()) <= 0){
-            JOptionPane.showMessageDialog(null, "Number can not be below 0, please try again!", "Number below 0", JOptionPane.ERROR_MESSAGE);
+        if ((Double.parseDouble(width.getText()) < 0.1) || (Double.parseDouble(length.getText()) < 0.1) || (Double.parseDouble(height.getText()) < 0.1) || (Double.parseDouble(width.getText()) > 10) || (Double.parseDouble(length.getText())> 10) || (Double.parseDouble(height.getText()) > 10)){
+            JOptionPane.showMessageDialog(null, "Box size limited to: \n - Min: 0.1m \n - Max: 10m", "Number out of range!", JOptionPane.ERROR_MESSAGE);
         }
-        
-        int grade = cmbGrade.getSelectedIndex() + 1;
-        int col = colBox.getSelectedIndex();
-        boolean bott = chkBottom.isSelected();
-        boolean corn = chkCorners.isSelected();
-        double size = 0;
-        double cost = 0; 
-        int quan = (int) spnQuantity.getValue();
-        
-        
-        
-        try{
-            //Tests for valid size inputs
-            double w = Double.parseDouble(width.getText());
-            double l = Double.parseDouble(length.getText());
-            double h = Double.parseDouble(height.getText());
-            
-            //Assuming no validation issues
-            size = ((w*l) + (w*h) + (l*h))*2;
-            createBox(grade, col, bott, corn, size, w, l, h, quan);
+        else {
+           
+            int grade = cmbGrade.getSelectedIndex() + 1;
+            int col = colBox.getSelectedIndex();
+            boolean bott = chkBottom.isSelected();
+            boolean corn = chkCorners.isSelected();
+            double size = 0;
+            double cost = 0; 
+            int quan = (int) spnQuantity.getValue();
 
-            
-        }catch(Exception e){
-            //Size values aren't doubles
-            JOptionPane.showMessageDialog(null, "Size must be a number!", 
-                    "Wrong Size", JOptionPane.ERROR_MESSAGE);
+
+
+            try{
+                //Tests for valid size inputs
+                double w = Double.parseDouble(width.getText());
+                double l = Double.parseDouble(length.getText());
+                double h = Double.parseDouble(height.getText());
+
+                //Assuming no validation issues
+                size = ((w*l) + (w*h) + (l*h))*2;
+                createBox(grade, col, bott, corn, size, w, l, h, quan);
+
+
+            }catch(Exception e){
+                //Size values aren't doubles
+                JOptionPane.showMessageDialog(null, "Size must be a number!", 
+                        "Wrong Size", JOptionPane.ERROR_MESSAGE);
+            }
         }
         
         
