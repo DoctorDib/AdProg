@@ -40,33 +40,7 @@ public class BoxType3 extends Box{
      *
      * @return
      */
-    void getPrice(){
-        
-        switch (grade) {
-            case 2:
-                {
-                    price = size * 0.60;
-                    break;
-                }
-            case 3:
-                {
-                    price = size * 0.72;
-                    break;
-                }
-            case 4:
-                {
-                    price = size * 0.90;
-                    break;
-                }
-            case 5:
-                {
-                    price = size * 1.40;
-                    break;
-                }
-            default:
-                break;
-        }
-    }
+    
     public void addTotal(double add){
         total += add;
     }
@@ -74,8 +48,9 @@ public class BoxType3 extends Box{
         return total + price;
     }
     String getReceipt(){
+        price = getPrice(size, grade);
         total = round(price*0.16);
-        String receipt = "\n           - Dimensions: " + length + " x " + width + " x " + height + "\t" + grade;
+        String receipt = "\n           - Size: " + length + " x " + width + " x " + height + "\t" + grade;
         receipt += "\n           - Grade: " + grade;
         receipt += "\n           - Colour: 2\t£" + round(price*0.16);
         return receipt;

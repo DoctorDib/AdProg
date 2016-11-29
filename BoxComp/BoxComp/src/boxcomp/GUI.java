@@ -384,12 +384,11 @@ public double Total = 0;
     }//GEN-LAST:event_spnQuantityStateChanged
 
     public void writeToReceipt(Box box, int quantity){
-        box.getPrice();
         receipt.setText(receipt.getText() + "\n===============================");
         receipt.setText(receipt.getText() + "\n     BoxType:" + box.getType());
         receipt.setText(receipt.getText() + box.getReceipt());
-        receipt.setText(receipt.getText() + "\n     Quantity: \t" + quantity);
-        receipt.setText(receipt.getText() + "\n     Item Total: \t" + box.getTotal()*quantity);
+        receipt.setText(receipt.getText() + "\n     Quantity: \tx" + quantity);
+        receipt.setText(receipt.getText() + "\n     Item Total: \t£" + box.getTotal()*quantity);
         
         Total += box.getTotal() * quantity;
         lblTCost.setText("£" + Double.toString(Total));
