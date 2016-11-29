@@ -42,7 +42,7 @@ public double Total = 0;
         spnQuantity = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        colBox = new javax.swing.JComboBox<>();
+        colBox = new javax.swing.JComboBox<String>();
         jLabel5 = new javax.swing.JLabel();
         height = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -53,11 +53,10 @@ public double Total = 0;
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         receipt = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        lblTotal = new javax.swing.JLabel();
+        lblTCost = new javax.swing.JLabel();
 
         javax.swing.GroupLayout dialogLayout = new javax.swing.GroupLayout(dialog.getContentPane());
         dialog.getContentPane().setLayout(dialogLayout);
@@ -77,7 +76,7 @@ public double Total = 0;
 
         jLabel1.setText("Box Ordering Form");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(12, 13, 108, 16);
+        jLabel1.setBounds(12, 13, 90, 14);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Input"));
@@ -102,7 +101,7 @@ public double Total = 0;
 
         jLabel4.setText("Quantity");
 
-        colBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No colour", "1 Colour", "2 Colours" }));
+        colBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No colour", "1 Colour", "2 Colours" }));
 
         jLabel5.setText("Colour Printing");
 
@@ -200,7 +199,7 @@ public double Total = 0;
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(12, 42, 357, 255);
+        jPanel1.setBounds(12, 42, 357, 237);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Output"));
@@ -215,25 +214,25 @@ public double Total = 0;
         receipt.setRequestFocusEnabled(false);
         jScrollPane1.setViewportView(receipt);
 
-        jButton1.setForeground(new java.awt.Color(0, 153, 0));
-        jButton1.setText("Add to Order");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setForeground(new java.awt.Color(0, 153, 0));
+        btnAdd.setText("Add to Order");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
 
-        jButton2.setForeground(new java.awt.Color(204, 0, 51));
-        jButton2.setText("Clear Fields");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnReset.setForeground(new java.awt.Color(204, 0, 51));
+        btnReset.setText("Clear Fields");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnResetActionPerformed(evt);
             }
         });
 
-        jLabel10.setText("Total:");
+        lblTotal.setText("Total:");
 
-        jLabel12.setText("0.0");
+        lblTCost.setText("0.0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -247,17 +246,15 @@ public double Total = 0;
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGap(101, 101, 101)
-                            .addComponent(jLabel10)
+                            .addComponent(lblTotal)
                             .addGap(25, 25, 25)
-                            .addComponent(jLabel12)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel11)
+                            .addComponent(lblTCost)
                             .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jButton2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                            .addComponent(jButton1))))
+                            .addComponent(btnReset)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAdd))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -267,17 +264,16 @@ public double Total = 0;
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
+                    .addComponent(lblTotal)
+                    .addComponent(lblTCost))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)))
+                    .addComponent(btnReset)
+                    .addComponent(btnAdd)))
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(12, 304, 357, 254);
+        jPanel2.setBounds(12, 304, 347, 247);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -288,7 +284,7 @@ public double Total = 0;
      * 
      * @param evt
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         //Resetting the whole form
         
         width.setText("");
@@ -304,7 +300,7 @@ public double Total = 0;
         colBox.setSelectedIndex(0);
         
         cmbGrade.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnResetActionPerformed
     
     
     /**
@@ -314,7 +310,7 @@ public double Total = 0;
      * 
      * @param evt
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         //validate and choose box
         
         int grade = cmbGrade.getSelectedIndex() + 1;
@@ -334,8 +330,8 @@ public double Total = 0;
             double h = Double.parseDouble(height.getText());
             
             //Assuming no validation issues
-            size = ((w*l) + (w*h) + (l*h)) * 2;
-            cost = createBox(grade, col, bott, corn, size, w, l, h, quan);
+            size = ((w*l) + (w*h) + (l*h))*2;
+            createBox(grade, col, bott, corn, size, w, l, h, quan);
 
             
         }catch(Exception e){
@@ -345,7 +341,7 @@ public double Total = 0;
         }
 
     }
-    public double createBox(int grade, int col, boolean bott, boolean corn, 
+    public void createBox(int grade, int col, boolean bott, boolean corn, 
             double size, double w, double l, double h, int quan){
     
     //Test if box can exist
@@ -356,43 +352,30 @@ public double Total = 0;
             //make box
             if (col == 0){
                 Box box = new BoxType1(grade, size);
-                price = box.getPrice();
-                System.out.println(price);
-                boxType = "I";
-                writeToReceipt(price, boxType, quan);
+                writeToReceipt(box, quan);
             }
             else if (col == 1){
                 Box box = new BoxType2(grade, size);
-                price = box.getPrice();
-                boxType = "II";
-                writeToReceipt(price, boxType, quan);
+                writeToReceipt(box, quan);
             }
             else if (col == 2 && bott == false){
                 Box box = new BoxType3(grade, size);
-                price = box.getPrice();
-                boxType = "III";
-                writeToReceipt(price, boxType, quan);
+                writeToReceipt(box, quan);
             }
             else if (col == 2 && bott == true && corn == false){
                 Box box = new BoxType4(grade, size);
-                price = box.getPrice();
-                boxType = "IV";
-                writeToReceipt(price, boxType, quan);
+                writeToReceipt(box, quan);
             }
             else{
                 Box box = new BoxType5(grade, size);
-                price = box.getPrice();
-                boxType = "V";
-                writeToReceipt(price, boxType, quan);
+                writeToReceipt(box, quan);
             }
 
         }else{
-            JOptionPane.showMessageDialog(null, valid, "Box Not Available", 
-            JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, valid, "Box Not Available", JOptionPane.ERROR_MESSAGE);
         }
-        return price * quan;
       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
     private void spnQuantityStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQuantityStateChanged
         int val = (int) spnQuantity.getValue();
@@ -401,15 +384,15 @@ public double Total = 0;
         }
     }//GEN-LAST:event_spnQuantityStateChanged
 
-    public void writeToReceipt(double price, String type, int quantity){
-        price = price * quantity;
-        receipt.setText(receipt.getText() + "\n==============================");
-        receipt.setText(receipt.getText() + "\nBoxType: " + type);
-        receipt.setText(receipt.getText() + "\nQuantity: " + quantity);
-        receipt.setText(receipt.getText() + "\nSubtotal: " + price);
+    public void writeToReceipt(Box box, int quantity){
+        double price = box.getPrice() * quantity;
+        receipt.setText(receipt.getText() + "\n===============================");
+        receipt.setText(receipt.getText() + "\n     BoxType:" + box.getType());
+        receipt.setText(receipt.getText() + "\n     Quantity: \t" + quantity);
+        receipt.setText(receipt.getText() + "\n     Item Total: \t" + price);
         
         Total = price + Total;
-        jLabel12.setText("£" + Double.toString(Total));
+        lblTCost.setText("£" + Double.toString(Total));
     }
     /**
      * 
@@ -449,6 +432,8 @@ public double Total = 0;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnReset;
     private javax.swing.JCheckBox chkBottom;
     private javax.swing.JCheckBox chkCorners;
     private javax.swing.JCheckBox chkTop;
@@ -456,12 +441,7 @@ public double Total = 0;
     private javax.swing.JComboBox<String> colBox;
     private javax.swing.JDialog dialog;
     private javax.swing.JTextField height;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -473,6 +453,8 @@ public double Total = 0;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTCost;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JTextField length;
     private javax.swing.JTextArea receipt;
     private javax.swing.JSpinner spnQuantity;

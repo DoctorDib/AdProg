@@ -15,6 +15,7 @@ public class BoxType3 extends Box{
     int grade;
     double size;
     double price = 0;
+    String bType = "III";
     //Constructor
     public BoxType3(int g, double s){
         super(g, s);
@@ -24,13 +25,17 @@ public class BoxType3 extends Box{
     }
     
     //Methods
-
+    public int getGrade(){
+        return grade;
+    }
+    String getType(){
+        return bType;
+    }
     /**
      *
      * @return
      */
-    @Override
-    public double getPrice(){
+    double getPrice(){
         
         switch (grade) {
             case 2:

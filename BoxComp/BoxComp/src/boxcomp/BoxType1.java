@@ -12,9 +12,10 @@ package boxcomp;
 public class BoxType1 extends Box{
     //fields
     
-    int grade;
-    double size;
-    double price = 0;
+    private int grade;
+    private double size;
+    private double price = 0;
+    private String bType = "I";
     //Constructor
     public BoxType1(int g, double s){
         super(g, s);
@@ -24,13 +25,14 @@ public class BoxType1 extends Box{
     }
     
     //Methods
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public double getPrice(){
+    public int getGrade(){
+        return grade;
+    }
+    String getType(){
+        return bType;
+    }
+    
+    double getPrice(){
         
         switch (grade) {
             case 1:
@@ -52,6 +54,11 @@ public class BoxType1 extends Box{
                 break;
         }
         return price;
+    }
+    
+    String getReceipt(int grade){
+        String receipt = "\n           - Grade: \t" + grade;  
+        return receipt;
     }
     
 }
