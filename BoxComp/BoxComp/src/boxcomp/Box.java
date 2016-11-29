@@ -25,7 +25,18 @@ abstract class Box {
     abstract String getType();
     abstract double getPrice();
     abstract int getGrade();
+     abstract double getTotal();
+    abstract String getReceipt();
     
+    //no methods since subclasses will
+    /**
+     * 
+     * @param num
+     * @return Rounds to 2 decimal places
+     */
+    public double round(double num){
+        return ((double)(Math.round(num*100)))/100;
+    }
     //no methods since subclasses will
 
 }

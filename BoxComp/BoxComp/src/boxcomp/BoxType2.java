@@ -16,6 +16,7 @@ public class BoxType2 extends Box{
     double size;
     double price = 0;
     String bType = "II";
+    double total = 0;
     //Constructor
     public BoxType2(int g, double s){
         super(g, s);
@@ -25,7 +26,7 @@ public class BoxType2 extends Box{
     }
     
     //Methods
-public int getGrade(){
+    public int getGrade(){
         return grade;
     }
     String getType(){
@@ -57,6 +58,17 @@ public int getGrade(){
                 break;
         }
         return price;
+    }
+    
+    public double getTotal(){
+        return total+price;
+    }
+    
+    String getReceipt(){
+        total = round(price*0.13);
+        String receipt = "\n           - Grade: \t" + grade;
+        receipt += "\n           - Colour: 1\t£" + round(price*0.13);
+        return receipt;
     }
     
 }

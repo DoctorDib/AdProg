@@ -70,13 +70,12 @@ public double Total = 0;
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(410, 615));
         setMinimumSize(new java.awt.Dimension(410, 615));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Box Ordering Form");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(12, 13, 108, 16);
+        jLabel1.setBounds(12, 13, 136, 20);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Input"));
@@ -152,7 +151,7 @@ public double Total = 0;
                     .addComponent(jLabel5)
                     .addComponent(jLabel2)
                     .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(chkTop)
@@ -183,13 +182,13 @@ public double Total = 0;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(colBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(26, Short.MAX_VALUE))
+                        .addContainerGap(31, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(chkBottom)
@@ -205,7 +204,7 @@ public double Total = 0;
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(12, 42, 357, 255);
+        jPanel1.setBounds(12, 42, 350, 298);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Output"));
@@ -261,12 +260,12 @@ public double Total = 0;
                             .addComponent(btnReset)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAdd))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -279,7 +278,7 @@ public double Total = 0;
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(12, 304, 347, 254);
+        jPanel2.setBounds(12, 304, 350, 270);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -360,27 +359,24 @@ public double Total = 0;
         Double price = 0.0;
         
         if(valid == "good"){
+            Box box;
             //make box
             if (col == 0){
-                Box box = new BoxType1(grade, size);
-                writeToReceipt(box, quan);
+                box = new BoxType1(grade, size);
             }
             else if (col == 1){
-                Box box = new BoxType2(grade, size);
-                writeToReceipt(box, quan);
+                box = new BoxType2(grade, size);
             }
             else if (col == 2 && bott == false){
-                Box box = new BoxType3(grade, size);
-                writeToReceipt(box, quan);
+                box = new BoxType3(grade, size);
             }
             else if (col == 2 && bott == true && corn == false){
-                Box box = new BoxType4(grade, size);
-                writeToReceipt(box, quan);
+                box = new BoxType4(grade, size);
             }
             else{
-                Box box = new BoxType5(grade, size);
-                writeToReceipt(box, quan);
+                box = new BoxType5(grade, size);
             }
+            writeToReceipt(box, quan);
 
         }else{
             JOptionPane.showMessageDialog(null, valid, "Box Not Available", JOptionPane.ERROR_MESSAGE);
@@ -403,10 +399,11 @@ public double Total = 0;
         double price = box.getPrice() * quantity;
         receipt.setText(receipt.getText() + "\n===============================");
         receipt.setText(receipt.getText() + "\n     BoxType:" + box.getType());
+        receipt.setText(receipt.getText() + box.getReceipt());
         receipt.setText(receipt.getText() + "\n     Quantity: \t" + quantity);
-        receipt.setText(receipt.getText() + "\n     Item Total: \t" + price);
+        receipt.setText(receipt.getText() + "\n     Item Total: \t" + box.getTotal());
         
-        Total = price + Total;
+        Total += price;
         lblTCost.setText("£" + Double.toString(Total));
     }
     /**
