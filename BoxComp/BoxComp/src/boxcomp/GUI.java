@@ -42,7 +42,7 @@ public double Total = 0;
         spnQuantity = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        colBox = new javax.swing.JComboBox<String>();
+        colBox = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         height = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -76,10 +76,16 @@ public double Total = 0;
 
         jLabel1.setText("Box Ordering Form");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(12, 13, 90, 14);
+        jLabel1.setBounds(12, 13, 108, 16);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Input"));
+
+        width.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                widthActionPerformed(evt);
+            }
+        });
 
         cmbGrade.setMaximumRowCount(5);
         cmbGrade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
@@ -101,7 +107,7 @@ public double Total = 0;
 
         jLabel4.setText("Quantity");
 
-        colBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No colour", "1 Colour", "2 Colours" }));
+        colBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No colour", "1 Colour", "2 Colours" }));
 
         jLabel5.setText("Colour Printing");
 
@@ -199,7 +205,7 @@ public double Total = 0;
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(12, 42, 357, 237);
+        jPanel1.setBounds(12, 42, 357, 255);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Output"));
@@ -273,7 +279,7 @@ public double Total = 0;
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(12, 304, 347, 247);
+        jPanel2.setBounds(12, 304, 347, 254);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -312,6 +318,9 @@ public double Total = 0;
      */
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         //validate and choose box
+        if (Double.parseDouble(width.getText()) <= 0){
+            JOptionPane.showMessageDialog(null, "Number can not be below 0, please try again!", "Number below 0", JOptionPane.ERROR_MESSAGE);
+        }
         
         int grade = cmbGrade.getSelectedIndex() + 1;
         int col = colBox.getSelectedIndex();
@@ -339,6 +348,8 @@ public double Total = 0;
             JOptionPane.showMessageDialog(null, "Size must be a number!", 
                     "Wrong Size", JOptionPane.ERROR_MESSAGE);
         }
+        
+        
 
     }
     public void createBox(int grade, int col, boolean bott, boolean corn, 
@@ -383,6 +394,10 @@ public double Total = 0;
             spnQuantity.setValue(1);
         }
     }//GEN-LAST:event_spnQuantityStateChanged
+
+    private void widthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_widthActionPerformed
+      
+    }//GEN-LAST:event_widthActionPerformed
 
     public void writeToReceipt(Box box, int quantity){
         double price = box.getPrice() * quantity;
