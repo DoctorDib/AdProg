@@ -17,11 +17,15 @@ public class BoxType5 extends Box{
     double price = 0;
     String bType = "V";
     double total = 0;
+    double length, width, height;
     //Constructor
-    public BoxType5(int g, double s){
-        super(g, s);
+    public BoxType5(int g, double l, double w, double h){
+        super(g, l, w, h);
         grade = g;
-        size = s;
+        length = l;
+        width = w;
+        height = h;
+        size = ((w*l) + (w*h) + (l*h))*2;
         
     }
     
@@ -64,7 +68,8 @@ public class BoxType5 extends Box{
     }
     String getReceipt(){
         total = round(price*0.16) + round(price*0.14) + round(price*0.10);
-        String receipt = "\n           - Grade: \t" + grade;
+        String receipt = "\n           - Dimensions: " + length + " x " + width + " x " + height + "\t£" + price;
+        receipt += "\n           - Grade: " + grade;
         receipt += "\n           - Colour: 2\t£" + round(price*0.16);
         receipt += "\n           - R-Bottom:\t£" + round(price*0.14);
         receipt += "\n           - R-Corners:\t£" + round(price*0.10);

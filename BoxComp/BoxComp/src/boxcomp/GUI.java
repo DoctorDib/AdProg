@@ -365,19 +365,19 @@ public double Total = 0;
             Box box;
             //make box
             if (col == 0){
-                box = new BoxType1(grade, size);
+                box = new BoxType1(grade, l, w, h);
             }
             else if (col == 1){
-                box = new BoxType2(grade, size);
+                box = new BoxType2(grade, l,w,h);
             }
             else if (col == 2 && bott == false){
-                box = new BoxType3(grade, size);
+                box = new BoxType3(grade, l,w,h);
             }
             else if (col == 2 && bott == true && corn == false){
-                box = new BoxType4(grade, size);
+                box = new BoxType4(grade, l,w,h);
             }
             else{
-                box = new BoxType5(grade, size);
+                box = new BoxType5(grade, l,w,h);
             }
             writeToReceipt(box, quan);
 
@@ -394,19 +394,14 @@ public double Total = 0;
         }
     }//GEN-LAST:event_spnQuantityStateChanged
 
-    private void widthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_widthActionPerformed
-      
-    }//GEN-LAST:event_widthActionPerformed
-
     public void writeToReceipt(Box box, int quantity){
-        double price = box.getPrice() * quantity;
         receipt.setText(receipt.getText() + "\n===============================");
         receipt.setText(receipt.getText() + "\n     BoxType:" + box.getType());
         receipt.setText(receipt.getText() + box.getReceipt());
         receipt.setText(receipt.getText() + "\n     Quantity: \t" + quantity);
-        receipt.setText(receipt.getText() + "\n     Item Total: \t" + box.getTotal());
+        receipt.setText(receipt.getText() + "\n     Item Total: \t" + box.getTotal()*quantity);
         
-        Total += price;
+        Total += box.getTotal()*quantity;
         lblTCost.setText("£" + Double.toString(Total));
     }
     /**
