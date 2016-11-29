@@ -14,7 +14,7 @@ public class BoxType5 extends Box{
     
     int grade;
     double size;
-    double price = 0;
+    double price;
     String bType = "V";
     double total = 0;
     double length, width, height;
@@ -46,6 +46,7 @@ public class BoxType5 extends Box{
             case 3:
                 {
                     price = size * 0.72;
+                    System.out.println(price);
                     break;
                 }
             case 4:
@@ -67,6 +68,7 @@ public class BoxType5 extends Box{
         return total + price;
     }
     String getReceipt(){
+        price = getPrice();
         total = round(price*0.16) + round(price*0.14) + round(price*0.10);
         String receipt = "\n           - Dimensions: " + length + " x " + width + " x " + height + "\t£" + price;
         receipt += "\n           - Grade: " + grade;

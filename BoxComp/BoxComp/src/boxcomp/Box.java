@@ -19,13 +19,13 @@ abstract class Box {
     //constructor
     public Box(int g, double l, double w, double h){
         grade = g;
-        size = ((w*l) + (w*h) + (l*h))*2;;
+        size = ((w*l) + (w*h) + (l*h))*2;
     }
     
     abstract String getType();
     abstract double getPrice();
     abstract int getGrade();
-     abstract double getTotal();
+    abstract double getTotal();
     abstract String getReceipt();
     
     //no methods since subclasses will

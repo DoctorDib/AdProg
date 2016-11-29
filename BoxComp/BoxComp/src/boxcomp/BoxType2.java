@@ -14,7 +14,7 @@ public class BoxType2 extends Box{
     
     int grade;
     double size;
-    double price = 0;
+    double price;
     String bType = "II";
     double total = 0;
     double length, width, height;
@@ -69,6 +69,7 @@ public class BoxType2 extends Box{
     }
     
     String getReceipt(){
+        price = getPrice();
         total = round(price*0.13);
         String receipt = "\n           - Dimensions: " + length + " x " + width + " x " + height + "\t" + grade;
         receipt += "\n           - Grade: " + grade;

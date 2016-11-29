@@ -14,7 +14,7 @@ public class BoxType1 extends Box{
     
     private int grade;
     private double size;
-    private double price = 0;
+    private double price;
     private String bType = "I";
     double total = 0;
     double length, width, height;
@@ -25,7 +25,7 @@ public class BoxType1 extends Box{
         length = l;
         width = w;
         height = h;
-        size = ((w*l) + (w*h) + (l*h))*2;;;
+        size = ((w*l) + (w*h) + (l*h))*2;
         
     }
     
@@ -66,6 +66,7 @@ public class BoxType1 extends Box{
     }
     
     String getReceipt(){
+        price = getPrice();
         String receipt = "\n           - Dimensions: " + length + " x " + width + " x " + height + "\t" + grade;
         receipt += "\n           - Grade: " + grade; 
         return receipt;

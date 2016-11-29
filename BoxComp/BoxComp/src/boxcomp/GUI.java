@@ -352,10 +352,8 @@ public double Total = 0;
             double size, double w, double l, double h, int quan){
     
     //Test if box can exist
-        String valid = validate(grade, col, bott, corn);
-        Double price = 0.0;
-        
-        if("good".equals(valid)){
+        String valid = validate(grade, col, bott, corn);        
+        if(valid.equals("good")){
             Box box;
             //make box
             if (col == 0){
