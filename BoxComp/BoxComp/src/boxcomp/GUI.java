@@ -70,7 +70,8 @@ public double Total = 0;
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(410, 615));
+        setMaximumSize(new java.awt.Dimension(396, 645));
+        setMinimumSize(new java.awt.Dimension(396, 645));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Box Ordering Form");
@@ -260,7 +261,7 @@ public double Total = 0;
                             .addComponent(btnReset)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAdd))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
