@@ -321,8 +321,8 @@ public double Total = 0;
             int col = colBox.getSelectedIndex();
             boolean bott = chkBottom.isSelected();
             boolean corn = chkCorners.isSelected();
-            double size = 0;
-            double cost = 0; 
+            double size;
+            //double cost = 0; 
             int quan = (int) spnQuantity.getValue();
 
 
@@ -355,23 +355,23 @@ public double Total = 0;
         String valid = validate(grade, col, bott, corn);
         Double price = 0.0;
         
-        if(valid == "good"){
+        if("good".equals(valid)){
             Box box;
             //make box
             if (col == 0){
                 box = new BoxType1(grade, l, w, h);
             }
             else if (col == 1){
-                box = new BoxType2(grade, l,w,h);
+                box = new BoxType2(grade, l, w, h);
             }
             else if (col == 2 && bott == false){
-                box = new BoxType3(grade, l,w,h);
+                box = new BoxType3(grade, l, w, h);
             }
             else if (col == 2 && bott == true && corn == false){
-                box = new BoxType4(grade, l,w,h);
+                box = new BoxType4(grade, l, w, h);
             }
             else{
-                box = new BoxType5(grade, l,w,h);
+                box = new BoxType5(grade, l, w, h);
             }
             writeToReceipt(box, quan);
 
@@ -395,7 +395,7 @@ public double Total = 0;
         receipt.setText(receipt.getText() + "\n     Quantity: \t" + quantity);
         receipt.setText(receipt.getText() + "\n     Item Total: \t" + box.getTotal()*quantity);
         
-        Total += box.getTotal()*quantity;
+        Total += box.getTotal() * quantity;
         lblTCost.setText("£" + Double.toString(Total));
     }
     /**
