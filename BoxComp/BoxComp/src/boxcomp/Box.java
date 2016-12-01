@@ -17,7 +17,7 @@ abstract class Box {
     String bType = null;
     
     //constructor
-    public Box(int g, double l, double w, double h){
+    public Box(int g, double l, double w, double h, boolean s){
         grade = g;
         size = ((w*l) + (w*h) + (l*h))*2;
     }

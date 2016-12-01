@@ -42,7 +42,7 @@ public double Total = 0;
         spnQuantity = new javax.swing.JSpinner();
         lvlGrade = new javax.swing.JLabel();
         lblQuantity = new javax.swing.JLabel();
-        colBox = new javax.swing.JComboBox<>();
+        colBox = new javax.swing.JComboBox<String>();
         lblColour = new javax.swing.JLabel();
         height = new javax.swing.JTextField();
         lblWidth = new javax.swing.JLabel();
@@ -50,13 +50,14 @@ public double Total = 0;
         lblHeight = new javax.swing.JLabel();
         lvlX1 = new javax.swing.JLabel();
         lblX2 = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         receipt = new javax.swing.JTextArea();
-        btnAdd = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
         lblTotal = new javax.swing.JLabel();
         lblTCost = new javax.swing.JLabel();
+        btnClear = new javax.swing.JButton();
 
         javax.swing.GroupLayout dialogLayout = new javax.swing.GroupLayout(dialog.getContentPane());
         dialog.getContentPane().setLayout(dialogLayout);
@@ -70,13 +71,13 @@ public double Total = 0;
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(396, 645));
-        setMinimumSize(new java.awt.Dimension(396, 645));
+        setMaximumSize(new java.awt.Dimension(396, 600));
+        setMinimumSize(new java.awt.Dimension(396, 600));
         getContentPane().setLayout(null);
 
         lblBoxOrder.setText("Box Ordering Form");
         getContentPane().add(lblBoxOrder);
-        lblBoxOrder.setBounds(12, 13, 108, 16);
+        lblBoxOrder.setBounds(12, 13, 90, 14);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Input"));
@@ -101,7 +102,7 @@ public double Total = 0;
 
         lblQuantity.setText("Quantity");
 
-        colBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No colour", "1 Colour", "2 Colours" }));
+        colBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No colour", "1 Colour", "2 Colours" }));
 
         lblColour.setText("Colour Printing");
 
@@ -115,12 +116,28 @@ public double Total = 0;
 
         lblX2.setText("x");
 
+        btnAdd.setForeground(new java.awt.Color(0, 153, 0));
+        btnAdd.setText("Add to Order");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        btnReset.setForeground(new java.awt.Color(204, 0, 51));
+        btnReset.setText("Clear Fields");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblWidth)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -139,26 +156,31 @@ public double Total = 0;
                     .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblHeight))
                 .addGap(63, 63, 63))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(colBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblColour)
-                    .addComponent(lvlGrade)
-                    .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblQuantity)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkTop)
-                            .addComponent(chkCorners)
-                            .addComponent(chkBottom))
-                        .addGap(21, 21, 21))))
+                            .addComponent(lvlGrade)
+                            .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblColour)
+                            .addComponent(colBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnAdd)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(chkTop)
+                                .addComponent(chkCorners)
+                                .addComponent(chkBottom))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)))
+                        .addGap(21, 21, 21))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnReset)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,28 +201,30 @@ public double Total = 0;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lvlGrade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(18, 18, 18)
                         .addComponent(lblColour)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(colBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(31, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(colBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblQuantity)
+                            .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnReset)
+                            .addComponent(btnAdd)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(chkBottom)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chkCorners)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkTop)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblQuantity))
-                        .addContainerGap())))
+                        .addComponent(chkTop)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(12, 42, 350, 262);
+        jPanel1.setBounds(10, 30, 350, 280);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Output"));
@@ -215,25 +239,18 @@ public double Total = 0;
         receipt.setRequestFocusEnabled(false);
         jScrollPane1.setViewportView(receipt);
 
-        btnAdd.setForeground(new java.awt.Color(0, 153, 0));
-        btnAdd.setText("Add to Order");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-
-        btnReset.setForeground(new java.awt.Color(204, 0, 51));
-        btnReset.setText("Clear Fields");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
-            }
-        });
-
         lblTotal.setText("Total:");
 
         lblTCost.setText("0.0");
+
+        btnClear.setForeground(new java.awt.Color(204, 0, 51));
+        btnClear.setText("Clear Order");
+        btnClear.setActionCommand("Clear Order");
+        btnClear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnClearMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -244,18 +261,14 @@ public double Total = 0;
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(101, 101, 101)
-                            .addComponent(lblTotal)
-                            .addGap(25, 25, 25)
-                            .addComponent(lblTCost)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btnReset)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAdd))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(lblTotal)
+                        .addGap(25, 25, 25)
+                        .addComponent(lblTCost))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnClear)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -267,14 +280,13 @@ public double Total = 0;
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotal)
                     .addComponent(lblTCost))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReset)
-                    .addComponent(btnAdd)))
+                .addGap(7, 7, 7)
+                .addComponent(btnClear)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(12, 304, 350, 253);
+        jPanel2.setBounds(10, 320, 350, 240);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -323,7 +335,7 @@ public double Total = 0;
                 int col = colBox.getSelectedIndex();
                 boolean bott = chkBottom.isSelected();
                 boolean corn = chkCorners.isSelected();
-                double size;
+                boolean seal = chkTop.isSelected();
                 //double cost = 0; 
                 int quan = (int) spnQuantity.getValue();
                 double w = Double.parseDouble(width.getText());
@@ -331,8 +343,7 @@ public double Total = 0;
                 double h = Double.parseDouble(height.getText());
 
                 //Assuming no validation issues
-                size = ((w*l) + (w*h) + (l*h))*2;
-                createBox(grade, col, bott, corn, size, w, l, h, quan);
+                createBox(grade, col, bott, corn, w, l, h, quan, seal);
                 }
         }catch(NumberFormatException e){
                 //Size values aren't doubles
@@ -344,7 +355,7 @@ public double Total = 0;
 
     }
     public void createBox(int grade, int col, boolean bott, boolean corn, 
-            double size, double w, double l, double h, int quan){
+            double w, double l, double h, int quan, boolean seal){
     
     //Test if box can exist
         String valid = validate(grade, col, bott, corn);        
@@ -352,19 +363,19 @@ public double Total = 0;
             Box box;
             //make box
             if (col == 0){
-                box = new BoxType1(grade, l, w, h);
+                box = new BoxType1(grade, l, w, h, seal);
             }
             else if (col == 1){
-                box = new BoxType2(grade, l, w, h);
+                box = new BoxType2(grade, l, w, h, seal);
             }
             else if (col == 2 && bott == false){
-                box = new BoxType3(grade, l, w, h);
+                box = new BoxType3(grade, l, w, h, seal);
             }
             else if (col == 2 && bott == true && corn == false){
-                box = new BoxType4(grade, l, w, h);
+                box = new BoxType4(grade, l, w, h, seal);
             }
             else{
-                box = new BoxType5(grade, l, w, h);
+                box = new BoxType5(grade, l, w, h, seal);
             }
             writeToReceipt(box, quan);
 
@@ -383,15 +394,21 @@ public double Total = 0;
         }
     }//GEN-LAST:event_spnQuantityStateChanged
 
+    private void btnClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseClicked
+        receipt.setText("");
+        Total = 0;
+        lblTCost.setText("£0.00");
+    }//GEN-LAST:event_btnClearMouseClicked
+
     public void writeToReceipt(Box box, int quantity){
         receipt.setText(receipt.getText() + "\n===============================");
         receipt.setText(receipt.getText() + "\n     BoxType:" + box.getType());
         receipt.setText(receipt.getText() + box.getReceipt());
         receipt.setText(receipt.getText() + "\n     Quantity: \tx" + quantity);
-        receipt.setText(receipt.getText() + "\n     Item Total: \t£" + box.getTotal()*quantity);
+        receipt.setText(receipt.getText() + "\n     Item Total: \t£" + (double)(Math.round(box.getTotal()*quantity*100))/100);
         
         Total += box.getTotal() * quantity;
-        lblTCost.setText("£" + Double.toString(Total));
+        lblTCost.setText("£" + Double.toString(((double)(Math.round(Total*100)))/100));
     }
     /**
      * 
@@ -432,6 +449,7 @@ public double Total = 0;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnReset;
     private javax.swing.JCheckBox chkBottom;
     private javax.swing.JCheckBox chkCorners;

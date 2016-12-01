@@ -16,11 +16,13 @@ public class BoxType2 extends Box{
     double size;
     double price;
     String bType = "II";
+    private boolean seal;
     double total = 0;
     double length, width, height;
     //Constructor
-    public BoxType2(int g, double l, double w, double h){
-        super(g, l, w, h);
+    public BoxType2(int g, double l, double w, double h, boolean s){
+        super(g, l, w, h, s);
+        seal = s;
         grade = g;
         length = l;
         width = w;
@@ -47,9 +49,13 @@ public class BoxType2 extends Box{
     String getReceipt(){
         price = getPrice(size, grade);
         total = round(price*0.13);
-        String receipt = "\n           - Size: " + length + " x " + width + " x " + height + "\t" + grade;
+        String receipt = "\n           - Size: " + length + " x " + width + " x " + height + "\t£" + round(price);
         receipt += "\n           - Grade: " + grade;
         receipt += "\n           - Colour: 1\t£" + round(price*0.13);
+        if (seal){
+            receipt += "\n           - Sealable Top: \t£" + round(price*0.08); 
+            total += round(price*0.08);
+        }
         return receipt;
     }
     
