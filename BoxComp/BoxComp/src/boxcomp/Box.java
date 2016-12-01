@@ -23,14 +23,12 @@ abstract class Box {
     }
     
     abstract String getType();
-    //abstract void getPrice();
     abstract int getGrade();
     abstract double getTotal();
     abstract String getReceipt();
     
     //no methods since subclasses will
     /**
-     * 
      * @param num
      * @return Rounds to 2 decimal places
      */
@@ -38,6 +36,13 @@ abstract class Box {
         return ((double)(Math.round(num*100)))/100;
     }
     
+    /**
+    * Calculates the price of the box without any extras, this depends on the
+    * grade of the cardboard.
+    * @param size The surface area of the box.
+    * @param grade The grade of the cardboard.
+    * @return The base price of the box.
+    */
     public double getPrice(double size, int grade){
         double price = 0;
         switch (grade) {
@@ -71,6 +76,4 @@ abstract class Box {
         }
         return price;
     }
-    //no methods since subclasses will
-
 }

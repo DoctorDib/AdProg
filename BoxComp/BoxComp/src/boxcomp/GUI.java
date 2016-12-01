@@ -354,6 +354,19 @@ public double Total = 0;
         
 
     }
+    
+    /**
+     * Determine what box type the user is ordering and create a box of that type.
+     * @param grade The grade of the box
+     * @param col How many colours the box has
+     * @param bott  Does it have a reinforced bottom?
+     * @param cornDoes it have reinforced corners?
+     * @param w The width of the box
+     * @param l The length of the box
+     * @param h The height of the box
+     * @param quan How many of the box is in the order
+     * @param seal Does it have a sealable top.
+     */
     public void createBox(int grade, int col, boolean bott, boolean corn, 
             double w, double l, double h, int quan, boolean seal){
     
@@ -385,6 +398,10 @@ public double Total = 0;
       
     }//GEN-LAST:event_btnAddActionPerformed
 
+    /**
+     * Make sure the quantity spinner can't go below 1 or above 100.
+     * @param evt 
+     */
     private void spnQuantityStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQuantityStateChanged
         int val = (int) spnQuantity.getValue();
         if (val<1){
@@ -394,12 +411,22 @@ public double Total = 0;
         }
     }//GEN-LAST:event_spnQuantityStateChanged
 
+    /**
+     * Reset the order by clearing the receipt.
+     * @param evt 
+     */
     private void btnClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseClicked
         receipt.setText("");
         Total = 0;
         lblTCost.setText("£0.00");
     }//GEN-LAST:event_btnClearMouseClicked
-
+        
+    /**
+    * Print the new box into the receipt and calculate the total cost of the
+    * order
+    * @param box
+    * @param quantity 
+    */
     public void writeToReceipt(Box box, int quantity){
         receipt.setText(receipt.getText() + "\n===============================");
         receipt.setText(receipt.getText() + "\n     BoxType:" + box.getType());
@@ -410,6 +437,7 @@ public double Total = 0;
         Total += box.getTotal() * quantity;
         lblTCost.setText("£" + Double.toString(((double)(Math.round(Total*100)))/100));
     }
+    
     /**
      * 
      * 

@@ -43,6 +43,10 @@ public class BoxType1 extends Box{
         return total + price;
     }
     
+    /**
+     * Return the extras to the receipt and calculate the pricing.
+     * @return 
+     */
     String getReceipt(){
         price = getPrice(size, grade);
         String receipt = "\n           - Size: " + length + " x " + width + " x " + height + "\t£" + round(price);
