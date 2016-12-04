@@ -53,6 +53,7 @@ public class GUI extends javax.swing.JFrame {
         lblTotal = new javax.swing.JLabel();
         lblTCost = new javax.swing.JLabel();
         btnClear = new javax.swing.JButton();
+        btnCmplt = new javax.swing.JButton();
 
         javax.swing.GroupLayout dialogLayout = new javax.swing.GroupLayout(dialog.getContentPane());
         dialog.getContentPane().setLayout(dialogLayout);
@@ -246,6 +247,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        btnCmplt.setForeground(new java.awt.Color(0, 153, 0));
+        btnCmplt.setText("Complete Order");
+        btnCmplt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCmpltMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -253,17 +262,22 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(lblTotal)
-                        .addGap(25, 25, 25)
-                        .addComponent(lblTCost))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnClear)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(btnClear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCmplt))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(lblTotal)
+                                .addGap(25, 25, 25)
+                                .addComponent(lblTCost))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 14, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +289,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(lblTotal)
                     .addComponent(lblTCost))
                 .addGap(7, 7, 7)
-                .addComponent(btnClear)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnClear)
+                    .addComponent(btnCmplt))
                 .addContainerGap())
         );
 
@@ -422,10 +438,46 @@ public class GUI extends javax.swing.JFrame {
      * @param evt The mouse click event
      */
     private void btnClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseClicked
-        receipt.setText("");
+        //Reset the receipt by clearing the textbox
+        receipt.setText("ORDER RECEIPT");
+        //Reset the total order cost
         Total = 0;
+        //Reset the cost label
         lblTCost.setText("£0.00");
     }//GEN-LAST:event_btnClearMouseClicked
+
+    /**
+     * Dummy complete method, the form isn't actually sent anywhere
+     * The form/order is just cleared for now.
+     * @param evt 
+     */
+    private void btnCmpltMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCmpltMouseClicked
+        //Reset the receipt by clearing the textbox
+        receipt.setText("ORDER RECEIPT");
+        //Reset the total order cost
+        Total = 0;
+        //Reset the cost label
+        lblTCost.setText("£0.00");
+        
+        //Clear the dimension boxes
+        width.setText("");
+        height.setText("");
+        length.setText("");
+        
+        //Clear the check boxes
+        chkBottom.setSelected(false);
+        chkCorners.setSelected(false);
+        chkTop.setSelected(false);
+        
+        //Reset the quantity spinner
+        spnQuantity.setValue(1);
+        
+        //Reset the colour dropdown
+        colBox.setSelectedIndex(0);
+        
+        //Reset the grade dropdown
+        cmbGrade.setSelectedIndex(0);
+    }//GEN-LAST:event_btnCmpltMouseClicked
         
     /**
     * Print the new box into the receipt and calculate the total cost of the
@@ -493,6 +545,7 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnCmplt;
     private javax.swing.JButton btnReset;
     private javax.swing.JCheckBox chkBottom;
     private javax.swing.JCheckBox chkCorners;
