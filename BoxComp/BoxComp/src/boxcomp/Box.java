@@ -13,8 +13,8 @@ package boxcomp;
 abstract class Box {
     //fields
     private int grade;
-    double size;
-    String bType = null;
+    private double size;
+    //private String bType = null;
     
     //constructor
     public Box(int g, double l, double w, double h, boolean s){
@@ -27,9 +27,9 @@ abstract class Box {
     abstract double getTotal();
     abstract String getReceipt();
     
-    //no methods since subclasses will
     /**
-     * @param num
+     * Rounds a double to 2 decimal places.
+     * @param num The inputted double
      * @return Rounds to 2 decimal places
      */
     public double round(double num){

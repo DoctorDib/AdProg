@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package boxcomp;
-
+import java.text.DecimalFormat;
 /**
- *
+ * A subclass of box for box type 1. This box will have grade 1-3 and no colours.
  * @author Ben, James, Jake
  */
 public class BoxType1 extends Box{
@@ -17,9 +17,17 @@ public class BoxType1 extends Box{
     private double price;
     private String bType = "I";
     private boolean seal;
-    double total = 0;
-    double length, width, height;
-    //Constructor
+    private double total = 0;
+    private double length, width, height;
+    
+    /**
+     * The constructor for the BoxType1 Class.
+     * @param g The grade of the cardboard
+     * @param l The length of the box
+     * @param w The width of the box
+     * @param h The height of the box
+     * @param s Does the box have a sealable top?
+     */
     public BoxType1(int g, double l, double w, double h, boolean s){
         super(g, l, w, h, s);
         seal = s;
@@ -32,14 +40,13 @@ public class BoxType1 extends Box{
     }
     
     //Methods
-    public int getGrade(){
+    int getGrade(){
         return grade;
     }
     String getType(){
         return bType;
     }
-    
-    public double getTotal(){
+    double getTotal(){
         return total + price;
     }
     
@@ -48,11 +55,12 @@ public class BoxType1 extends Box{
      * @return 
      */
     String getReceipt(){
+        DecimalFormat dFormat = new DecimalFormat("0.00");
         price = getPrice(size, grade);
-        String receipt = "\n           - Size: " + length + " x " + width + " x " + height + "\t£" + round(price);
+        String receipt = "\n           - Size: " + width + " x " + length + " x " + height + "\t£" + dFormat.format(round(price));
         receipt += "\n           - Grade: " + grade; 
         if (seal){
-            receipt += "\n           - Sealable Top: \t£" + round(price*0.08); 
+            receipt += "\n           - Sealable Top: \t£" + dFormat.format(round(price*0.08)); 
             total = round(price*0.08);
         }
         return receipt;
