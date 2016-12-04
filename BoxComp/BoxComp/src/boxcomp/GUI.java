@@ -1,27 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package boxcomp;
         
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
+
 /**
- *
- * @author Ben, James, Jake
+ * 
+ * @author UP780104, UP780065, UP793946
  */
 public class GUI extends javax.swing.JFrame {
-//public String boxType;
-public double Total = 0;
+    public double Total = 0; //The total cost of the order
+    
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
-        spnQuantity.setValue(1);
+        spnQuantity.setValue(1); //Set the quantity to start at 1
     }
 
+    //--------------------------------
+    //Netbeans generated code below --
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -73,7 +72,7 @@ public double Total = 0;
 
         lblBoxOrder.setText("Box Ordering Form");
         getContentPane().add(lblBoxOrder);
-        lblBoxOrder.setBounds(12, 13, 90, 14);
+        lblBoxOrder.setBounds(12, 13, 120, 14);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Input"));
@@ -286,6 +285,9 @@ public double Total = 0;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //End of netbeans generated code --
+    //---------------------------------
+    
     /**
      * Reset button
      * This wipes the input and output fields
@@ -293,20 +295,26 @@ public double Total = 0;
      * @param evt
      */
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        //Resetting the whole form
+        //Resetting the whole input form
+        //Clear text boxes and checkboxes
         
+        //Clear the dimension boxes
         width.setText("");
         height.setText("");
         length.setText("");
         
+        //Clear the check boxes
         chkBottom.setSelected(false);
         chkCorners.setSelected(false);
         chkTop.setSelected(false);
         
+        //Reset the quantity spinner
         spnQuantity.setValue(1);
         
+        //Reset the colour dropdown
         colBox.setSelectedIndex(0);
         
+        //Reset the grade dropdown
         cmbGrade.setSelectedIndex(0);
     }//GEN-LAST:event_btnResetActionPerformed
     
@@ -321,33 +329,32 @@ public double Total = 0;
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         //validate and choose box
         try{
-                //Tests for valid size inputs
-            if ((Double.parseDouble(width.getText()) < 0.1) || (Double.parseDouble(length.getText()) < 0.1) || (Double.parseDouble(height.getText()) < 0.1) || (Double.parseDouble(width.getText()) > 10) || (Double.parseDouble(length.getText())> 10) || (Double.parseDouble(height.getText()) > 10)){
+            //Get the dimensions to test for valid size
+            double w = Double.parseDouble(width.getText());
+            double l = Double.parseDouble(length.getText());
+            double h = Double.parseDouble(height.getText());
+            
+            //Test if the dimensions are within the valid ranges.
+            if (w < 0.1 || l < 0.1 || h < 0.1 || w > 10 || l > 10 || h > 10){
                 JOptionPane.showMessageDialog(null, "Box size limited to: \n - Min: 0.1m \n - Max: 10m", "Number out of range!", JOptionPane.ERROR_MESSAGE);
             }
             else {
+                //Get all the other variables needed to create the box from user inputs.
                 int grade = cmbGrade.getSelectedIndex() + 1;
                 int col = colBox.getSelectedIndex();
                 boolean bott = chkBottom.isSelected();
                 boolean corn = chkCorners.isSelected();
                 boolean seal = chkTop.isSelected();
-                //double cost = 0; 
                 int quan = (int) spnQuantity.getValue();
-                double w = Double.parseDouble(width.getText());
-                double l = Double.parseDouble(length.getText());
-                double h = Double.parseDouble(height.getText());
 
-                //Assuming no validation issues
+                //Now we will create the box
                 createBox(grade, col, bott, corn, w, l, h, quan, seal);
                 }
-        }catch(NumberFormatException e){
+        }catch(NumberFormatException e){ //The user didn't enter a number into the right fields.
                 //Size values aren't doubles
                 JOptionPane.showMessageDialog(null, "Size must be a number!", 
                         "Wrong Size", JOptionPane.ERROR_MESSAGE);
             }
-        
-        
-
     }
     
     /**
@@ -365,32 +372,33 @@ public double Total = 0;
     public void createBox(int grade, int col, boolean bott, boolean corn, 
             double w, double l, double h, int quan, boolean seal){
     
-    //Test if box can exist
-        String valid = validate(grade, col, bott, corn);        
-        if(valid.equals("good")){
+        //Does the box exist?
+        String valid = validateBox(grade, col, bott, corn);        
+        if(valid.equals("good")){ //The box exists.
             Box box;
-            //make box
-            if (col == 0){
+            //Make the correct box
+            if (col == 0){ //Box Type 1
                 box = new BoxType1(grade, l, w, h, seal);
             }
-            else if (col == 1){
+            else if (col == 1){ //Box Type 2
                 box = new BoxType2(grade, l, w, h, seal);
             }
-            else if (col == 2 && bott == false){
+            else if (col == 2 && bott == false){ //Box Type 3
                 box = new BoxType3(grade, l, w, h, seal);
             }
-            else if (col == 2 && bott == true && corn == false){
+            else if (col == 2 && bott == true && corn == false){ //Box Type 4
                 box = new BoxType4(grade, l, w, h, seal);
             }
-            else{
+            else{ //Box Type 5
                 box = new BoxType5(grade, l, w, h, seal);
             }
+            
+            //Print out the receipt
             writeToReceipt(box, quan);
 
-        }else{
+        }else{ //The box doesn't exist so send an error.
             JOptionPane.showMessageDialog(null, valid, "Box Not Available", JOptionPane.ERROR_MESSAGE);
         }
-      
     }//GEN-LAST:event_btnAddActionPerformed
 
     /**
@@ -398,10 +406,13 @@ public double Total = 0;
      * @param evt The mouse click event
      */
     private void spnQuantityStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQuantityStateChanged
-        int val = (int) spnQuantity.getValue();
+        int val = (int) spnQuantity.getValue(); //Get the quantity the user wanted
+        //Is the quantity below 1?
         if (val<1){
+            //Reset it back to 1
             spnQuantity.setValue(1);
-        } else if (val > 100) {
+        } else if (val > 100) { //Is it more than 100?
+            //Reset it back to 100
             spnQuantity.setValue(100);
         }
     }//GEN-LAST:event_spnQuantityStateChanged
@@ -423,21 +434,26 @@ public double Total = 0;
     * @param quantity How many boxes of this type there are in the order.
     */
     public void writeToReceipt(Box box, int quantity){
+        //Set formatting 
         DecimalFormat dFormat = new DecimalFormat("0.00");
+        
         receipt.setText(receipt.getText() + "\n===============================");
         receipt.setText(receipt.getText() + "\n     BoxType:" + box.getType());
+        
+        //Get the extras from the box class
         receipt.setText(receipt.getText() + box.getReceipt());
         receipt.setText(receipt.getText() + "\n     Quantity: \tx" + quantity);
         double itmTotal = (double)(Math.round(box.getTotal()*quantity*100))/100;
         receipt.setText(receipt.getText() + "\n     Item Total: \t£" + dFormat.format(itmTotal));
         
+        //Calculate the total cost of the order
         Total += box.getTotal() * quantity;
+        //Format the total to 2 deciaml places
         Total = (double)(Math.round(Total*100))/100;
         lblTCost.setText("£" + dFormat.format(Total));
     }
     
     /**
-     * 
      * 
      * @param args the command line arguments
      */
@@ -473,6 +489,7 @@ public double Total = 0;
         });
     }
 
+    //Netbeans generated code
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
@@ -503,7 +520,7 @@ public double Total = 0;
     private javax.swing.JSpinner spnQuantity;
     private javax.swing.JTextField width;
     // End of variables declaration//GEN-END:variables
-
+    //End of netbeans generated code
     /**
      * Determine if the box the user wants to create exists in flexbox. If not
      * return exactly what is wrong so the user knows what to change.
@@ -514,40 +531,52 @@ public double Total = 0;
      * @return Returns "good" if there are no issues or a string of why this box
      * can't be created.
      */
-    private String validate(int grade, int colour, boolean bottom, boolean corner){
+    private String validateBox(int grade, int colour, boolean bottom, boolean corner){
         boolean fail = false;
-        String cause = "";
+        String cause = ""; //We need a variable to store all the issues
+        
+        //Reinforced corners MUST have reinforced bottom
         if(corner&&!bottom){
             fail = true;
             cause += "Reinforced Bottom is required for Reinforced Corners \n";
         }
+        //Grade 2 or above is needed for reinforced bottom
         if(bottom&&grade==1){
             fail = true;
             cause += "Grade 2 or higher is required for Reinforced Bottom \n";
         }
+        //Grade 3 or above is needed for reinforced corners
         if(corner&&grade<3){
             fail = true;
             cause += "Grade 3 or higher is required for Reinforced Corners \n";
         }
+        //You need 2 colours for reinforced bottom
         if (colour!=2&&bottom){
             fail = true;
             cause += "2 Colours are required for Reinforced Bottom \n";
         }
+        //Grade 2 or higher is needed for 2 colours
         if(colour==2&&grade==1){
             fail = true;
             cause += "Grade 2 or higher is required for 2 Colours \n";
         }
+        //Grade 2-4 is needed for only 1 colour
         if((grade<2 || grade>4) && colour==1){
             fail = true;
             cause += "Grade 2-4 is required for 1 Colour \n";
         }
+        //Grade 1-3 is needed for no colours
         if(colour==0&&grade>3){
             fail = true;
             cause += "Grade 3 or lower is required for no Colours \n";
         }
+        
+        //Did the validation fail?
         if(fail){
+            //Return everything that's wrong
             return cause;
         } else {
+            //It didn't fail so return "good"
             return "good";
         }
     }

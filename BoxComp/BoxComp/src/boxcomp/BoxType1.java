@@ -1,27 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package boxcomp;
 import java.text.DecimalFormat;
 /**
  * A subclass of box for box type 1. This box will have grade 1-3 and no colours.
- * @author Ben, James, Jake
+ * @author UP780104, UP780065, UP793946
  */
 public class BoxType1 extends Box{
-    //fields
     
-    private int grade;
-    private double size;
-    private double price;
-    private String bType = "I";
-    private boolean seal;
-    private double total = 0;
-    private double length, width, height;
+    private int grade; //The grade of the cardboard
+    private double size; //The surface area of the box
+    private double price; //The base price of the box
+    private boolean seal; //Does the box have a sealable top
+    private double eTotal = 0; //The total price for the extras
+    private double length, width, height; // The dimensions of the box
     
     /**
-     * The constructor for the BoxType1 Class.
+     * 
      * @param g The grade of the cardboard
      * @param l The length of the box
      * @param w The width of the box
@@ -35,34 +28,48 @@ public class BoxType1 extends Box{
         length = l;
         width = w;
         height = h;
-        size = ((w*l) + (w*h) + (l*h))*2;
+        size = ((w*l) + (w*h) + (l*h))*2; //Calculate the surface area in m^2
         
     }
-    
-    //Methods
-    int getGrade(){
-        return grade;
-    }
+
+    /**
+     * Returns a string of what boxType this is.
+     * @return Returns "I" as String
+     */
     String getType(){
-        return bType;
-    }
-    double getTotal(){
-        return total + price;
+        return "I";
     }
     
     /**
-     * Return the extras to the receipt and calculate the pricing.
-     * @return 
+     * Returns the total price for this box. The base price + the total price for
+     * extras.
+     * @return The total price of the box.
+     */
+    double getTotal(){
+        return eTotal + price;
+    }
+    
+    /**
+     * Return the receipt of the extras to print on the
+     * receipt with the prices for individual extras.
+     * @return A string of extras with their pricing
+     * for the receipt.
      */
     String getReceipt(){
         DecimalFormat dFormat = new DecimalFormat("0.00");
+        //Get the price of the box
         price = getPrice(size, grade);
+        
+        //Get the extras we will be returning
         String receipt = "\n           - Size: " + width + " x " + length + " x " + height + "\t£" + dFormat.format(round(price));
         receipt += "\n           - Grade: " + grade; 
+        
+        //Does the box have a sealable top?
         if (seal){
             receipt += "\n           - Sealable Top: \t£" + dFormat.format(round(price*0.08)); 
-            total = round(price*0.08);
+            eTotal = round(price*0.08);
         }
+        //Return the receipt of extras
         return receipt;
     }
 }

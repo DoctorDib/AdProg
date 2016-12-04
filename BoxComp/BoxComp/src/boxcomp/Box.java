@@ -1,29 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package boxcomp;
 
 /**
  * This class is used to define from the user input
  * which box (subclass) is to be used.
- * @author Ben, James, Jake
+ * @author UP780104, UP780065, UP793946
  */
 abstract class Box {
-    //fields
-    private int grade;
-    private double size;
-    //private String bType = null;
     
-    //constructor
-    public Box(int g, double l, double w, double h, boolean s){
-        grade = g;
-        size = ((w*l) + (w*h) + (l*h))*2;
-    }
+    /**
+     * 
+     * @param g The grade of the cardboard
+     * @param l The length of the box
+     * @param w The width of the box
+     * @param h The height of the box
+     * @param s Does the box have a sealable top?
+     */
+    public Box(int g, double l, double w, double h, boolean s){}
     
     abstract String getType();
-    abstract int getGrade();
     abstract double getTotal();
     abstract String getReceipt();
     
@@ -45,6 +39,7 @@ abstract class Box {
     */
     public double getPrice(double size, int grade){
         double price = 0;
+        //Calculate price depending on what grade the cardboard is
         switch (grade) {
             case 1:
                 {
@@ -74,6 +69,7 @@ abstract class Box {
             default:
                 break;
         }
+        //Return the base price of the box.
         return price;
     }
 }
