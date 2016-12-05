@@ -37,7 +37,7 @@ public class GUI extends javax.swing.JFrame {
         spnQuantity = new javax.swing.JSpinner();
         lvlGrade = new javax.swing.JLabel();
         lblQuantity = new javax.swing.JLabel();
-        colBox = new javax.swing.JComboBox<>();
+        colBox = new javax.swing.JComboBox<String>();
         lblColour = new javax.swing.JLabel();
         height = new javax.swing.JTextField();
         lblWidth = new javax.swing.JLabel();
@@ -47,7 +47,7 @@ public class GUI extends javax.swing.JFrame {
         lblX2 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblM = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         receipt = new javax.swing.JTextArea();
@@ -74,7 +74,7 @@ public class GUI extends javax.swing.JFrame {
 
         lblBoxOrder.setText("Box Ordering Form");
         getContentPane().add(lblBoxOrder);
-        lblBoxOrder.setBounds(12, 13, 120, 16);
+        lblBoxOrder.setBounds(12, 13, 120, 14);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Input"));
@@ -99,7 +99,7 @@ public class GUI extends javax.swing.JFrame {
 
         lblQuantity.setText("Quantity");
 
-        colBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No colour", "1 Colour", "2 Colours" }));
+        colBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No colour", "1 Colour", "2 Colours" }));
 
         lblColour.setText("Colour Printing");
 
@@ -129,7 +129,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("M");
+        lblM.setText("M");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -180,7 +180,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel3))
+                                        .addComponent(lblM))
                                     .addComponent(lblHeight))))
                         .addGap(28, 28, Short.MAX_VALUE))))
         );
@@ -199,7 +199,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lvlX1)
                     .addComponent(lblX2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblM, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -561,7 +561,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> colBox;
     private javax.swing.JDialog dialog;
     private javax.swing.JTextField height;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -569,6 +568,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblColour;
     private javax.swing.JLabel lblHeight;
     private javax.swing.JLabel lblLength;
+    private javax.swing.JLabel lblM;
     private javax.swing.JLabel lblQuantity;
     private javax.swing.JLabel lblTCost;
     private javax.swing.JLabel lblTotal;
